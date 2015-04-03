@@ -19,8 +19,8 @@ var routeHandler = function(name, req, res){
   cookies.set('token_'+name, name);
   cookies.set('token_'+name+'_domain', name+'_domain', { domain: name+'.com' });
   res.write('<html>');
-  res.write('iframe: <iframe src="http://sso.com:1337" width="300" height="100"></iframe><br>');
-  res.write('user action: <a href=\'javascript:window.open("http://sso.com:1337", "sso", "width=300, height=100, menubar=0, status=0, titlebar=0, toolbar=0, location=0");\'>login</a><br>');
+  res.write('iframe: <iframe id="ssoIframe" src="http://sso.com:1337" width="300" height="100"></iframe><br>');
+  res.write('user action: <a href=\'javascript:sso=window.open("http://sso.com:1337", "sso", "width=300, height=100, menubar=0, status=0, titlebar=0, toolbar=0, location=0");setTimeout(function(){sso.close();document.getElementById("ssoIframe").src="http://sso.com:1337";},500)\'>login</a><br>');
   res.write('host: ' + req.headers.host + '<br>');
   res.write('token_'+name+': ' + cookies.get('token_'+name) + '<br>');
   res.write('token_'+name+'_domain: ' + cookies.get('token_'+name+'_domain') + '<br>');
