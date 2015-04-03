@@ -1,0 +1,8 @@
+{
+    "port": 1337,
+    "hosts":[
+        "a.com",
+        "b.com",
+        "c.com"
+    ]
+}

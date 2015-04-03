@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+###########################
+# This is the dev init, update script for this project
+# @author Adam Eivy
+###########################
+
+# include my library helpers for colorized echo and helper bot
+source ./lib/libecho.sh
+# and installers
+source ./lib/libinstall.sh
+
+case "$1" in
+    init)
+        bot "Let's setup your environment!"
+        if [ ! -d ~/.dotfiles ];then
+            bot "One easy way to get node, homebrew, etc idempotently installed and configured on your system is to download the dotfiles project from here:$COL_YELLOW https://github.com/atomantic/dotfiles$COL_RESET \nWould you like me to install this for you in ~/.dotfiles? \n(note that this replaces your existing ~/. config files with new ones)"
+            read -r -p "[Y|n] " response
+
+            if [[ ! $response =~ ^(no|n|N) ]];then
+                bot "ok, let me grab my clone..."
+                git clone --recurse-submodules https://github.com/atomantic/dotfiles ~/.dotfiles
+                cd ~/.dotfiles
+                ./install.sh
+                cd - > /dev/null
+                ok
+            fi
+        fi
+        install_homebrew
+        install_brewcask
+        ;;
+    *)
+        bot "Hi, I can do a few helpful development tricks.\n"
+        echo -e "Run each as an argument to this script (e.g. './dev init'):\n"
+        echo "init - initialize your development environment (installing and running the app)"
+        ;;
+esac

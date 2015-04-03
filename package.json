@@ -1,0 +1,26 @@
+{
+  "name": "canhazcookie",
+  "version": "0.1.0",
+  "repository": "git@github.com:atomantic/canhazcookie.git",
+  "description": "cookie security model testing app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test automation yet...\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Adam Eivy <atomantic gmail>",
+  "license": "MIT",
+  "dependencies": {
+    "connect": "^3.3.5",
+    "cookies": "^0.5.0",
+    "gulp": "^3.8.11",
+    "lodash-node": "^3.6.0",
+    "vhost": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0",
+    "gulp-supervisor": "^0.1.2",
+    "opn": "^1.0.1"
+  }
+}
