@@ -7,12 +7,12 @@ var vhost       = require('vhost');
 var app = connect();
 var acom = connect();
 var bcom = connect();
-var ccom = connect();
+var sso = connect();
 
 app
   .use(vhost('a.com', acom))
   .use(vhost('b.com', bcom))
-  .use(vhost('c.com', ccom));
+  .use(vhost('sso.com', sso));
 
 var routeHandler = function(name, req, res){
   var cookies = new Cookies(req, res);
@@ -26,7 +26,7 @@ var routeHandler = function(name, req, res){
 
 acom.use(_.partial(routeHandler, 'a'));
 bcom.use(_.partial(routeHandler, 'b'));
-ccom.use(_.partial(routeHandler, 'c'));
+sso.use(_.partial(routeHandler, 'sso'));
 
 app.listen(conf.port, function() {
   console.log('running', conf);
