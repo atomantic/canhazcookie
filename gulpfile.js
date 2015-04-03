@@ -8,13 +8,9 @@ var gulp        = require('gulp'),
     opn         = require('opn');
 
 var conf = require('./conf');
-var server = {
-    host: 'a.com',
-    port: conf.port
-};
 
 var sourcePaths = {
-  app: ['*.js', '*.json'],
+  app: ['index.js'],
   test: ['test/*.js']
 };
 
@@ -45,14 +41,15 @@ gulp.task( 'supervise', function() {
 gulp.task('openbrowser', function() {
   // supervise takes a second to start it up
   setTimeout(function(){
-    opn( 'http://' + server.host + ':' + server.port );
-  }, 1000);
+    opn( 'http://a.com:'+conf.port );
+    opn( 'http://b.com:'+conf.port );
+  }, 500);
 });
 
 // Watch
 gulp.task('watch', function() {
   // Watch .js files
-  gulp.watch(['*.js', '*.json', 'test/*.js'], ['js']);
+  gulp.watch(['index.js', 'conf.json', 'test/*.js'], ['js']);
 
 });
 

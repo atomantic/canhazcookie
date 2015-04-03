@@ -18,15 +18,30 @@ var routeHandler = function(name, req, res){
   var cookies = new Cookies(req, res);
   cookies.set('token_'+name, name);
   cookies.set('token_'+name+'_domain', name+'_domain', { domain: name+'.com' });
-  res.write('host: ' + req.headers.host + '\n');
-  res.write('token_'+name+': ' + cookies.get('token_'+name) + '\n');
-  res.write('token_'+name+'_domain: ' + cookies.get('token_'+name+'_domain') + '\n');
+  res.write('<html>');
+  res.write('iframe: <iframe src="http://sso.com:1337" width="300" height="100"></iframe><br>');
+  res.write('user action: <a href=\'javascript:window.open("http://sso.com:1337", "sso", "width=300, height=100, menubar=0, status=0, titlebar=0, toolbar=0, location=0");\'>login</a><br>');
+  res.write('host: ' + req.headers.host + '<br>');
+  res.write('token_'+name+': ' + cookies.get('token_'+name) + '<br>');
+  res.write('token_'+name+'_domain: ' + cookies.get('token_'+name+'_domain') + '<br>');
+  res.write('</html>');
   res.end('\n');
 };
 
 acom.use(_.partial(routeHandler, 'a'));
 bcom.use(_.partial(routeHandler, 'b'));
-sso.use(_.partial(routeHandler, 'sso'));
+sso.use(function(req, res){
+  var cookies = new Cookies(req, res);
+  var name = 'sso';
+  cookies.set('token_'+name, name);
+  cookies.set('token_'+name+'_domain', name+'_domain', { domain: name+'.com' });
+  res.write('<html>');
+  res.write('host: ' + req.headers.host + '<br>');
+  res.write('token_'+name+': ' + cookies.get('token_'+name) + '<br>');
+  res.write('token_'+name+'_domain: ' + cookies.get('token_'+name+'_domain') + '<br>');
+  res.write('</html>');
+  res.end('\n');
+});
 
 app.listen(conf.port, function() {
   console.log('running', conf);
