@@ -25,4 +25,4 @@ comming soon via `npm test` / `gulp test`
 
 The test sequence we would like to run is this:
 
-![flow](https://github.com/atomantic/canhazcookie/raw/master/docs/ssopopup.png)
+![flow](https://github.com/atomantic/canhazcookie/raw/master/docs/popupsso.png)
