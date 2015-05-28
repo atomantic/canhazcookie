@@ -18,6 +18,14 @@ If you don't yet have node, npm, etc, you can run `dev init` -- this will prompt
 `gulp` will run the app and auto-load `a.com:1337`
 From there, you can manually navigate to `b.com:1337`, `sso.com:1337`
 
+## Testing
+
+1. Notice on a.com:1337 that the iframe does not have a token_sso value.
+2. Notice on b.com:1337 that the iframe does not have a token_sso value.
+3. Click the login link on a.com
+4. Reload b.com:1337
+5. Notice that now, the cookies can be set and read.
+
 
 ## Automation
 
