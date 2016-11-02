@@ -10,3 +10,11 @@ patch:
         patched: '2016-11-02T13:55:27.383Z'
     - gulp > vinyl-fs > glob-watcher > gaze > globule > glob > minimatch:
         patched: '2016-11-02T13:55:27.383Z'
+    - gulp > vinyl-fs > glob-stream > minimatch:
+        patched: '2016-11-02T14:14:49.901Z'
+    - gulp > vinyl-fs > glob-stream > glob > minimatch:
+        patched: '2016-11-02T14:14:49.901Z'
+    - gulp > vinyl-fs > glob-watcher > gaze > globule > minimatch:
+        patched: '2016-11-02T14:14:49.901Z'
+    - gulp > vinyl-fs > glob-watcher > gaze > globule > glob > minimatch:
+        patched: '2016-11-02T14:14:49.901Z'
