@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test automation yet...\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Adam Eivy <atomantic gmail>",
   "license": "MIT",
@@ -15,12 +17,14 @@
     "cookies": "^0.5.0",
     "gulp": "^3.8.11",
     "lodash-node": "^3.6.0",
-    "vhost": "^3.0.0"
+    "vhost": "^3.0.0",
+    "snyk": "^1.19.1"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-jshint": "^1.10.0",
     "gulp-supervisor": "^0.1.2",
     "opn": "^1.0.1"
-  }
+  },
+  "snyk": true
 }
