@@ -3,23 +3,14 @@
  * $ npm install gulp gulp-jshint gulp-supervisor opn --save-dev
  */
 var gulp        = require('gulp'),
-    jshint      = require('gulp-jshint'),
     supervisor  = require('gulp-supervisor'),
     opn         = require('opn');
 
 var conf = require('./conf');
 
 var sourcePaths = {
-  app: ['index.js'],
-  test: ['test/*.js']
+  app: ['index.js']
 };
-
-// Scripts
-gulp.task('js', function() {
-  return gulp.src(sourcePaths.app)
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'));
-});
 
 gulp.task( 'supervise', function() {
     supervisor( 'index.js', {
@@ -46,11 +37,4 @@ gulp.task('openbrowser', function() {
   }, 500);
 });
 
-// Watch
-gulp.task('watch', function() {
-  // Watch .js files
-  gulp.watch(['index.js', 'conf.json', 'test/*.js'], ['js']);
-
-});
-
-gulp.task('default', ['supervise', 'watch', 'openbrowser']);
+gulp.task('default', ['supervise', 'openbrowser']);
