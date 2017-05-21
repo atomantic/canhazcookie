@@ -13,7 +13,7 @@
   "author": "Adam Eivy <atomantic gmail>",
   "license": "MIT",
   "dependencies": {
-    "connect": "3.6.0",
+    "connect": "3.6.2",
     "cookies": "0.7.0",
     "gulp": "^3.8.11",
     "lodash-node": "3.10.2",
